@@ -7,9 +7,9 @@ TagManager:
   - Bubblun
   - Walls
   - Floor
-  - ZenChan
   - JumpPoint
   - Ceiling
+  - Enemy
   layers:
   - Default
   - TransparentFX

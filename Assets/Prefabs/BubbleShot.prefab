@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6336078947951175714}
   - component: {fileID: 709417750829691532}
   - component: {fileID: 5519416836955158264}
-  - component: {fileID: -2088232535287868010}
   - component: {fileID: 1111562196599439758}
+  - component: {fileID: 2236038682237328163}
   m_Layer: 0
   m_Name: BubbleShot
   m_TagString: Untagged
@@ -118,27 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabBubbleWithEnemy: {fileID: 237486819503620739, guid: 471967f0b9157b947aded761ae86d238, type: 3}
   prefabBubbleAlone: {fileID: 7357526434011289384, guid: 61296b7d3ebdb694bbf8cdca7fdddb07, type: 3}
---- !u!50 &-2088232535287868010
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259882177228448173}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &1111562196599439758
 Animator:
   serializedVersion: 4
@@ -159,3 +138,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &2236038682237328163
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259882177228448173}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
