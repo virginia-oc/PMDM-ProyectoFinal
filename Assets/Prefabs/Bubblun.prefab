@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 1.5
   velocidadSalto: 8
+  prefabBubbleShot: {fileID: 708465597960091399, guid: bea59f302f7a8754fa55516d0f7b3dbb, type: 3}

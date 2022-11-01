@@ -60,10 +60,11 @@
     <Compile Include="Assets\Scripts\Bubblun.cs" />
     <Compile Include="Assets\Scripts\GameStatus.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
-    <Compile Include="Assets\Scripts\Wall.cs" />
     <Compile Include="Assets\Scripts\ZenChan.cs" />
     <Compile Include="Assets\Scripts\BananaItem.cs" />
     <Compile Include="Assets\Scripts\BubbleShot.cs" />
+    <Compile Include="Assets\Scripts\BubbleWithEnemy.cs" />
+    <Compile Include="Assets\Scripts\BubbleAlone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
