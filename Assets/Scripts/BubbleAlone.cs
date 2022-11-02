@@ -24,19 +24,28 @@ public class BubbleAlone : MonoBehaviour
         if (collision.tag == "Ceiling")
         {
             velocidad = 0;
+            anim.Play("BubbleAloneAutodestruction");
+            StartCoroutine(WaitForAutodestruction(10.0f));
         }
         if (collision.tag == "Bubblun")
         {
             anim.Play("BubbleDeathAnimation");
-            StartCoroutine(WaitForBubbleAnimation(1.20f));
+            StartCoroutine(WaitForDeathAnimation(1.20f));
+            FindObjectOfType<GameController>().SendMessage("AnotarBubbleAlone");
         }
 
     }
 
-    private IEnumerator WaitForBubbleAnimation(float waitTime)
+    private IEnumerator WaitForDeathAnimation(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        FindObjectOfType<GameController>().SendMessage("AnotarBubbleAlone");
         Destroy(gameObject);
+    }
+
+    private IEnumerator WaitForAutodestruction(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        anim.Play("BubbleDeathAnimation");
+        StartCoroutine(WaitForDeathAnimation(1.20f));
     }
 }

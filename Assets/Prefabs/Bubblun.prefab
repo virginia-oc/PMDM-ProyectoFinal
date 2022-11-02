@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8136449909271100337}
   - component: {fileID: 3531326974560015844}
   - component: {fileID: 3885005670340208851}
+  - component: {fileID: 1728010481}
   m_Layer: 0
   m_Name: Bubblun
   m_TagString: Bubblun
@@ -149,3 +150,24 @@ MonoBehaviour:
   velocidad: 1.5
   velocidadSalto: 8
   prefabBubbleShot: {fileID: 708465597960091399, guid: bea59f302f7a8754fa55516d0f7b3dbb, type: 3}
+  mirandoHaciaDerecha: 1
+--- !u!95 &1728010481
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4755663133527610595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cc698ba229183f44b9854b2627d3620, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

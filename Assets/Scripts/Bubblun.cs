@@ -9,7 +9,6 @@ public class Bubblun : MonoBehaviour
     private float xInicial, yInicial;
     private float alturaPlayer;
     [SerializeField] Transform prefabBubbleShot;
-    private float direccion;
     private Animator anim;
     public bool mirandoHaciaDerecha = true;
 
@@ -25,7 +24,7 @@ public class Bubblun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direccion = Input.GetAxis("Horizontal");
+        float direccion = Input.GetAxis("Horizontal");
         
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1));
         float distanciaSuelo = hit.distance;
