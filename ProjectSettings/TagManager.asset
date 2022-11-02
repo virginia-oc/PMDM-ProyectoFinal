@@ -10,6 +10,7 @@ TagManager:
   - JumpPoint
   - Ceiling
   - Enemy
+  - Platforms
   layers:
   - Default
   - TransparentFX
