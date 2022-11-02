@@ -8,37 +8,70 @@ public class ZenChan : MonoBehaviour
     private float alturaPersonaje;
     private float anchoPersonaje;
     private float velocidadX = -0.5f;
+    private float velocidadY = 0.5f;
     private float constante;   
-    private Vector3 localScale;
+    private bool vertical = false;
+    bool corrutinaTerminada = false;
+    bool tocandoElSuelo = true;
+    bool playingAnimAscenso = false;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         alturaPersonaje = GetComponent<Collider2D>().bounds.size.y;
         anchoPersonaje = GetComponent<Collider2D>().bounds.size.x;
-        constante = anchoPersonaje / 2 + anchoPersonaje / 8;
-        localScale = transform.localScale;
+        constante = anchoPersonaje / 2 + anchoPersonaje / 8;       
+        anim = gameObject.GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(velocidadX * Time.deltaTime, 0, 0);       
+        if (!playingAnimAscenso)
+        {
+            if (vertical && corrutinaTerminada)
+            {
+                Vector3 rayOrigin = new Vector3(
+                    transform.position.x, transform.position.y - alturaPersonaje, transform.position.z);
+                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, new Vector2(0, -1));
+                float distanciaSuelo = hit.distance;
+                tocandoElSuelo = distanciaSuelo < alturaPersonaje / 2;
+                if (tocandoElSuelo == true)
+                {
+                    gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                    vertical = false;
+                    corrutinaTerminada = false;
+                }
+            }
+
+            if (vertical == false)
+            {
+                if (velocidadX < 0)                                
+                    anim.Play("ZenChanWalkingLeft");                                  
+                else             
+                    anim.Play("ZenChanWalkingRight");               
+                   
+                transform.Translate(velocidadX * Time.deltaTime, 0, 0);
+            }             
+            else
+            {
+                tocandoElSuelo = false;
+                transform.Translate(0, velocidadY * Time.deltaTime, 0);
+            }
+        }        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Collider2D>().tag == "Walls")
         {
-            velocidadX *= -1;
-            localScale.x *= -1;
-            transform.localScale = localScale;
+            velocidadX *= -1;           
         }
         if (collision.gameObject.GetComponent<Collider2D>().tag == "Bubblun")
         {
             FindObjectOfType<GameController>().SendMessage("PerderVida");
-            FindObjectOfType<Bubblun>().SendMessage("ResetPosition");
         }
     }
 
@@ -46,8 +79,24 @@ public class ZenChan : MonoBehaviour
     {
         if (collision.tag == "JumpPoint")
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 150f);
+            playingAnimAscenso = true;
+            vertical = true;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            anim.Play("ZenChanAscenso");
+            StartCoroutine(WaitForAnimacionAscenso());           
         }
     }
 
+    private IEnumerator WaitForAnimacionAscenso()
+    {
+        yield return new WaitForSeconds(1.0f);
+        playingAnimAscenso = false;
+        StartCoroutine(Ascenso());
+    }
+
+    private IEnumerator Ascenso()
+    {
+        yield return new WaitForSeconds(0.5f);
+        corrutinaTerminada = true;
+    }
 }

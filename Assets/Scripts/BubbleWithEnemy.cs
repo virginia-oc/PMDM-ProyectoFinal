@@ -5,11 +5,12 @@ using UnityEngine;
 public class BubbleWithEnemy : MonoBehaviour
 {
     [SerializeField] float velocidad = 1f;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,13 +21,22 @@ public class BubbleWithEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Ceiling")
+        if (collision.tag == "Bubblun")
+        {
+            velocidad = 0;
+            anim.Play("BubbleDeathAnimation");
+            StartCoroutine(WaitForDeathAnimation(1.20f));
+            FindObjectOfType<GameController>().SendMessage("AnotarBubbleWithEnemy");
+        }
+        else if (collision.tag == "Ceiling")
         {
             velocidad = 0;
         }
-        if (collision.tag == "Bubblun")
-        {
+    }
 
-        }
+    private IEnumerator WaitForDeathAnimation(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(gameObject);
     }
 }

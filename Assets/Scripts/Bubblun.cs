@@ -56,6 +56,10 @@ public class Bubblun : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            if (mirandoHaciaDerecha)
+                anim.Play("BubblunShootingRight");
+            else
+                anim.Play("BubblunShootingLeft");
             Transform bubbleShot = Instantiate(prefabBubbleShot, transform.position,
                 Quaternion.identity);
             Physics2D.IgnoreCollision(bubbleShot.GetComponent<Collider2D>(),
@@ -68,4 +72,9 @@ public class Bubblun : MonoBehaviour
         transform.position = new Vector3(xInicial, yInicial, 0);
     }
 
+    private void playDeathAnimation()
+    {
+        
+        anim.Play("BubblunDeath");
+    }
 }

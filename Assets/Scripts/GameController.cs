@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
         vidas = FindObjectOfType<GameStatus>().vidas;
         nivelActual = FindObjectOfType<GameStatus>().nivelActual;
         HUD.text = "Lives left: " + vidas  + "    " +
-            "Score: " + puntos;
+            "Score: " + puntos;      
     }
 
     // Update is called once per frame
@@ -37,6 +37,15 @@ public class GameController : MonoBehaviour
         vidas--;
         FindObjectOfType<GameStatus>().vidas = vidas;
         UpdateHUD();
+        
+
+        if (vidas <= 0)
+        {
+            FindObjectOfType<Bubblun>().SendMessage("playDeathAnimation");
+            StartCoroutine(TerminarPartida());
+        }
+        else
+            FindObjectOfType<Bubblun>().SendMessage("ResetPosition");
     }
 
     private void AvanzarNivel()
@@ -59,5 +68,18 @@ public class GameController : MonoBehaviour
     {
         HUD.text = "Lives left: " + vidas + "    " +
             "Score: " + puntos;
+    }
+
+    public void AnotarBubbleWithEnemy()
+    {
+        puntos += 2000;
+        FindObjectOfType<GameStatus>().puntos = puntos;
+        UpdateHUD();
+    }
+
+    private IEnumerator TerminarPartida()
+    {
+        yield return new WaitForSeconds(1.20f);
+        SceneManager.LoadScene("GameOverScene");
     }
 }

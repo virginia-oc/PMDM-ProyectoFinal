@@ -6,6 +6,7 @@ public class BubbleAlone : MonoBehaviour
 {
     [SerializeField] float velocidad = 1f;
     private Animator anim;
+    bool bubbleDeath = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,19 +22,20 @@ public class BubbleAlone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Ceiling")
+        if (collision.tag == "Bubblun")
+        {
+            velocidad = 0;
+            bubbleDeath = true;
+            anim.Play("BubbleDeathAnimation");
+            StartCoroutine(WaitForDeathAnimation(1.20f));
+            FindObjectOfType<GameController>().SendMessage("AnotarBubbleAlone");
+        }
+        else if (collision.tag == "Ceiling" && bubbleDeath == false)
         {
             velocidad = 0;
             anim.Play("BubbleAloneAutodestruction");
             StartCoroutine(WaitForAutodestruction(10.0f));
         }
-        if (collision.tag == "Bubblun")
-        {
-            anim.Play("BubbleDeathAnimation");
-            StartCoroutine(WaitForDeathAnimation(1.20f));
-            FindObjectOfType<GameController>().SendMessage("AnotarBubbleAlone");
-        }
-
     }
 
     private IEnumerator WaitForDeathAnimation(float waitTime)
