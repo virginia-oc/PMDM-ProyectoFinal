@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     private int puntos;
     private int vidas;
     private int nivelActual;
+    [SerializeField] TMPro.TextMeshProUGUI HUD;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,8 @@ public class GameController : MonoBehaviour
         puntos = FindObjectOfType<GameStatus>().puntos;
         vidas = FindObjectOfType<GameStatus>().vidas;
         nivelActual = FindObjectOfType<GameStatus>().nivelActual;
+        HUD.text = "Lives left: " + vidas  + "    " +
+            "Score: " + puntos;
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class GameController : MonoBehaviour
     {
         vidas--;
         FindObjectOfType<GameStatus>().vidas = vidas;
+        UpdateHUD();
     }
 
     private void AvanzarNivel()
@@ -42,5 +46,18 @@ public class GameController : MonoBehaviour
             nivelActual = 1;
         FindObjectOfType<GameStatus>().nivelActual = nivelActual;
         SceneManager.LoadScene("Level" + nivelActual);
+    }
+
+    public void AnotarBubbleAlone()
+    {
+        puntos += 10;
+        FindObjectOfType<GameStatus>().puntos = puntos;
+        UpdateHUD();
+    }
+
+    public void UpdateHUD()
+    {
+        HUD.text = "Lives left: " + vidas + "    " +
+            "Score: " + puntos;
     }
 }

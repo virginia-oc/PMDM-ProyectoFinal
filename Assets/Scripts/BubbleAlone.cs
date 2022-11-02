@@ -5,11 +5,12 @@ using UnityEngine;
 public class BubbleAlone : MonoBehaviour
 {
     [SerializeField] float velocidad = 1f;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,7 +25,18 @@ public class BubbleAlone : MonoBehaviour
         {
             velocidad = 0;
         }
+        if (collision.tag == "Bubblun")
+        {
+            anim.Play("BubbleDeathAnimation");
+            StartCoroutine(WaitForBubbleAnimation(1.20f));
+        }
+
     }
 
-    
+    private IEnumerator WaitForBubbleAnimation(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        FindObjectOfType<GameController>().SendMessage("AnotarBubbleAlone");
+        Destroy(gameObject);
+    }
 }

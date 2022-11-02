@@ -30,4 +30,9 @@ public class GameStatus : MonoBehaviour
     {
         
     }
+
+    private void ReseteaStatus()
+    {
+        Destroy(gameObject);
+    }
 }

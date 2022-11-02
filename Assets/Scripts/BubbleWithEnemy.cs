@@ -24,5 +24,9 @@ public class BubbleWithEnemy : MonoBehaviour
         {
             velocidad = 0;
         }
+        if (collision.tag == "Bubblun")
+        {
+
+        }
     }
 }
