@@ -9,7 +9,6 @@ public class ZenChan : MonoBehaviour
     private float anchoPersonaje;
     private float velocidadX = -0.5f;
     private float velocidadY = 0.5f;
-    private float constante;   
     private bool vertical = false;
     bool corrutinaTerminada = false;
     bool tocandoElSuelo = true;
@@ -20,10 +19,8 @@ public class ZenChan : MonoBehaviour
     void Start()
     {
         alturaPersonaje = GetComponent<Collider2D>().bounds.size.y;
-        anchoPersonaje = GetComponent<Collider2D>().bounds.size.x;
-        constante = anchoPersonaje / 2 + anchoPersonaje / 8;       
+        anchoPersonaje = GetComponent<Collider2D>().bounds.size.x;             
         anim = gameObject.GetComponent<Animator>();
-
     }
 
     // Update is called once per frame

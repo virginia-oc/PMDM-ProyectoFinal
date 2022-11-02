@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BananaItem : MonoBehaviour
+public class ZenChanDeath : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,11 +14,5 @@ public class BananaItem : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        FindObjectOfType<GameController>().SendMessage("AnotarItemRecogido");
-        Destroy(gameObject);
     }
 }
