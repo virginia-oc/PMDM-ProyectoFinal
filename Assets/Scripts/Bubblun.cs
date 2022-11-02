@@ -28,7 +28,7 @@ public class Bubblun : MonoBehaviour
         
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1));
         float distanciaSuelo = hit.distance;
-        bool tocandoElSuelo = distanciaSuelo < alturaPlayer;
+        bool tocandoElSuelo = distanciaSuelo < alturaPlayer *3/4;
 
         if (tocandoElSuelo && (direccion > 0.1f))
         {
@@ -44,7 +44,7 @@ public class Bubblun : MonoBehaviour
 
         transform.Translate(direccion * velocidad * Time.deltaTime, 0, 0);
 
-        float salto = Input.GetAxis("Jump");
+        float salto = Input.GetAxisRaw("Jump");
         if (salto > 0)
         {
             if (tocandoElSuelo)

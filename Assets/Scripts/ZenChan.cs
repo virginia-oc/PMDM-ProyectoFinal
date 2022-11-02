@@ -68,6 +68,7 @@ public class ZenChan : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Collider2D>().tag == "Bubblun")
         {
+            velocidadX *= -1;
             FindObjectOfType<GameController>().SendMessage("PerderVida");
         }
     }

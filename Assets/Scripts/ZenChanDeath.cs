@@ -41,7 +41,7 @@ public class ZenChanDeath : MonoBehaviour
             if (transform.position.x < 0)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(60, -10));
             else
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(-60, -10));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(-80, -10));
         }
         
     }
