@@ -13,6 +13,7 @@ TagManager:
   - Platforms
   - ZenChan
   - Mighta
+  - PlatformPortal
   layers:
   - Default
   - TransparentFX

@@ -57,9 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\ZenChanDeath.cs" />
+    <Compile Include="Assets\Scripts\EnemyDeath.cs" />
     <Compile Include="Assets\Scripts\Bubblun.cs" />
     <Compile Include="Assets\Scripts\GameStatus.cs" />
+    <Compile Include="Assets\Scripts\PlatformPortal.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Mighta.cs" />
     <Compile Include="Assets\Scripts\BubbleWithEnemy.cs" />

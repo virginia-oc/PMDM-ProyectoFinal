@@ -39,7 +39,7 @@ public class BubbleWithEnemy : MonoBehaviour
 
             if (isBubbleWithMighta)
             {
-                enemyDeath.gameObject.SendMessage("isMightaDeath");
+                enemyDeath.gameObject.SendMessage("IsMightaDeath");
             }
             StartCoroutine(WaitForDeathAnimation(1.20f));
         }

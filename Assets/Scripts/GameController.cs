@@ -17,14 +17,14 @@ public class GameController : MonoBehaviour
         puntos = FindObjectOfType<GameStatus>().puntos;
         vidas = FindObjectOfType<GameStatus>().vidas;
         nivelActual = FindObjectOfType<GameStatus>().nivelActual;
-        HUD.text = "Lives left: " + vidas  + "    " +
-            "Score: " + puntos;      
+        HUD.text = "Lives: " + vidas  + "    " +
+            "Score: " + puntos;     
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void AnotarItemRecogido()
@@ -43,7 +43,6 @@ public class GameController : MonoBehaviour
         FindObjectOfType<GameStatus>().vidas = vidas;
         UpdateHUD();
         
-
         if (vidas <= 0)
         {
             FindObjectOfType<Bubblun>().SendMessage("playDeathAnimation");
@@ -74,7 +73,7 @@ public class GameController : MonoBehaviour
 
     public void UpdateHUD()
     {
-        HUD.text = "Lives left: " + vidas + "    " +
+        HUD.text = "Lives: " + vidas + "    " +
             "Score: " + puntos;
     }
 
