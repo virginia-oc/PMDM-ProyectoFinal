@@ -11,6 +11,7 @@ public class Bubblun : MonoBehaviour
     [SerializeField] Transform prefabBubbleShot;
     private Animator anim;
     public bool mirandoHaciaDerecha = true;
+    private AudioSource[] sonido;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Bubblun : MonoBehaviour
         yInicial = transform.position.y;
         alturaPlayer = GetComponent<Collider2D>().bounds.size.y;
         anim = gameObject.GetComponent<Animator>();
+        sonido = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class Bubblun : MonoBehaviour
         {
             if (tocandoElSuelo)
             {
+                sonido[1].Play();
                 Vector3 fuerzaSalto = new Vector3(0, velocidadSalto, 0);
                 GetComponent<Rigidbody2D>().AddForce(fuerzaSalto);
             }
@@ -56,6 +59,7 @@ public class Bubblun : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            sonido[0].Play();
             if (mirandoHaciaDerecha)
                 anim.Play("BubblunShootingRight");
             else

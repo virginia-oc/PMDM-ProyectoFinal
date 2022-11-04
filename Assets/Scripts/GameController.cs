@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     private int nivelActual;
     [SerializeField] TMPro.TextMeshProUGUI HUD;
     private int itemsTotales = 4;
+    private AudioSource sonido;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,9 @@ public class GameController : MonoBehaviour
         vidas = FindObjectOfType<GameStatus>().vidas;
         nivelActual = FindObjectOfType<GameStatus>().nivelActual;
         HUD.text = "Lives: " + vidas  + "    " +
-            "Score: " + puntos;     
+            "Score: " + puntos;
+        sonido = GetComponent<AudioSource>();
+        sonido.Play();
     }
 
     // Update is called once per frame

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    private AudioSource sonido;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sonido = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class Item : MonoBehaviour
     {
         if (collision.tag == "Bubblun")
         {
+            sonido.Play();
             FindObjectOfType<GameController>().SendMessage("AnotarItemRecogido");
             Destroy(gameObject);
         }

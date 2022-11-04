@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class CinemachineFollowingObject : MonoBehaviour
 {
     [SerializeField] float velocidad = - 0.5f;
+    private AudioSource sonido;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(WaitForCredits());
+        sonido = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
