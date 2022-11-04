@@ -6,12 +6,16 @@ public class BubbleWithEnemy : MonoBehaviour
 {
     [SerializeField] float velocidad = 1f;
     private Animator anim;
-    [SerializeField] Transform prefabZenChanDeath;
+    [SerializeField] Transform prefabEnemyDeath;
+    [SerializeField] Transform prefabItem;
+    bool isBubbleWithMighta = false;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        if (isBubbleWithMighta)
+            anim.Play("BubbleWithMighta");
     }
 
     // Update is called once per frame
@@ -27,10 +31,16 @@ public class BubbleWithEnemy : MonoBehaviour
             velocidad = 0;
             anim.Play("BubbleDeathAnimation");
             FindObjectOfType<GameController>().SendMessage("AnotarBubbleWithEnemy");
-            Transform zenChanDeath = Instantiate(prefabZenChanDeath, transform.position,
+
+            Transform enemyDeath = Instantiate(prefabEnemyDeath, transform.position,
                 Quaternion.identity);
-            Physics2D.IgnoreCollision(zenChanDeath.GetComponent<Collider2D>(),
+            Physics2D.IgnoreCollision(enemyDeath.GetComponent<Collider2D>(),
                 GetComponent<Collider2D>());
+
+            if (isBubbleWithMighta)
+            {
+                enemyDeath.gameObject.SendMessage("isMightaDeath");
+            }
             StartCoroutine(WaitForDeathAnimation(1.20f));
         }
         else if (collision.tag == "Ceiling")
@@ -43,5 +53,10 @@ public class BubbleWithEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Destroy(gameObject);
+    }
+
+    private void BubbleWithMighta()
+    {
+        isBubbleWithMighta = true;
     }
 }

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private int vidas;
     private int nivelActual;
     [SerializeField] TMPro.TextMeshProUGUI HUD;
+    private int itemsTotales = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,10 @@ public class GameController : MonoBehaviour
     {
         puntos += 500;
         FindObjectOfType<GameStatus>().puntos = puntos;
+        itemsTotales--;
+
+        if (itemsTotales == 0)
+            AvanzarNivel();
     }
 
     public void PerderVida()
@@ -52,7 +57,10 @@ public class GameController : MonoBehaviour
     {
         nivelActual++;
         if (nivelActual > FindObjectOfType<GameStatus>().nivelMaximo)
-            nivelActual = 1;
+        {
+            SceneManager.LoadScene("WinScene");
+        }
+            
         FindObjectOfType<GameStatus>().nivelActual = nivelActual;
         SceneManager.LoadScene("Level" + nivelActual);
     }

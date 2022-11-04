@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
 
     public void LanzarJuego()
     {
+        FindObjectOfType<GameStatus>().SendMessage("ResetGameStatus");
         SceneManager.LoadScene("Level1");
     }
 }

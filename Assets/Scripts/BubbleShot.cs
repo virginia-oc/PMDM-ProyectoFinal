@@ -28,15 +28,21 @@ public class BubbleShot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.tag == "ZenChan" || collision.tag == "Mighta")
         {
+            string tagCollision = collision.tag;
             Destroy(collision.gameObject);
             Transform bubbleWithEnemy = Instantiate(prefabBubbleWithEnemy, 
                 transform.position, Quaternion.identity);
             Physics2D.IgnoreCollision(bubbleWithEnemy.GetComponent<Collider2D>(),
-                GetComponent<Collider2D>());
+                GetComponent<Collider2D>());  
+
+            if (tagCollision == "Mighta")           
+                bubbleWithEnemy.gameObject.SendMessage("BubbleWithMighta");
+            
             Destroy(gameObject);
         }
+ 
         if (collision.tag == "Walls")
         {
             CambiarDireccion();

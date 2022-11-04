@@ -11,6 +11,8 @@ TagManager:
   - Ceiling
   - Enemy
   - Platforms
+  - ZenChan
+  - Mighta
   layers:
   - Default
   - TransparentFX
