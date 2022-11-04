@@ -7,6 +7,7 @@ public class EnemyDeath : MonoBehaviour
     float fuerzaY = 50;
     [SerializeField] Transform prefabItem;
     private bool isMightaDeath = false;
+    private bool isInvaderDeath = false;
     private Animator anim;
 
     // Start is called before the first frame update
@@ -18,6 +19,8 @@ public class EnemyDeath : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         if (isMightaDeath)
             anim.Play("MightaDeath");
+        else if (isInvaderDeath)
+            anim.Play("InvaderDeath");
 
         StartCoroutine(WaitForItem());
     }
@@ -65,5 +68,10 @@ public class EnemyDeath : MonoBehaviour
     private void IsMightaDeath()
     {
         isMightaDeath = true;
+    }
+
+    private void IsInvaderDeath()
+    {
+        isInvaderDeath = true;
     }
 }

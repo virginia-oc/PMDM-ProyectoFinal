@@ -9,6 +9,7 @@ public class BubbleWithEnemy : MonoBehaviour
     [SerializeField] Transform prefabEnemyDeath;
     [SerializeField] Transform prefabItem;
     bool isBubbleWithMighta = false;
+    bool isBubbleWithInvader = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,8 @@ public class BubbleWithEnemy : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         if (isBubbleWithMighta)
             anim.Play("BubbleWithMighta");
+        else if (isBubbleWithInvader)
+            anim.Play("BubbleWithInvader");
     }
 
     // Update is called once per frame
@@ -41,6 +44,9 @@ public class BubbleWithEnemy : MonoBehaviour
             {
                 enemyDeath.gameObject.SendMessage("IsMightaDeath");
             }
+            else if (isBubbleWithInvader)
+                enemyDeath.gameObject.SendMessage("IsInvaderDeath");
+                
             StartCoroutine(WaitForDeathAnimation(1.20f));
         }
         else if (collision.tag == "Ceiling")
@@ -58,5 +64,10 @@ public class BubbleWithEnemy : MonoBehaviour
     private void BubbleWithMighta()
     {
         isBubbleWithMighta = true;
+    }
+
+    private void BubbleWithInvader()
+    {
+        isBubbleWithInvader = true;
     }
 }

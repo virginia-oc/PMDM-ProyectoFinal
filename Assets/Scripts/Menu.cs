@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     private int puntos;
     [SerializeField] TMPro.TextMeshProUGUI HUD;
-    [SerializeField] TMPro.TextMeshProUGUI gameOverText;
+    [SerializeField] TMPro.TextMeshProUGUI gameOverText;  
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Menu : MonoBehaviour
             puntos = FindObjectOfType<GameStatus>().puntos;
             HUD.text = "Score: " + puntos;
             StartCoroutine(GameOverEffect());
-        }
+        }  
     }
 
     // Update is called once per frame

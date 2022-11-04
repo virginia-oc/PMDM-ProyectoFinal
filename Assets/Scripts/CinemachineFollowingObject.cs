@@ -19,14 +19,11 @@ public class CinemachineFollowingObject : MonoBehaviour
     void Update()
     {
         transform.Translate(0, velocidad * Time.deltaTime, 0);
-
-        if (Input.anyKey)
-            SceneManager.LoadScene("WelcomeScene");
     }
 
     private IEnumerator WaitForCredits()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(8.0f);
         SceneManager.LoadScene("WelcomeScene");
     }
 }

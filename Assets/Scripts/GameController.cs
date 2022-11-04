@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     private int vidas;
     private int nivelActual;
     [SerializeField] TMPro.TextMeshProUGUI HUD;
-    private int itemsTotales = 4;
+    private int itemsTotales = 1;
     private AudioSource sonido;
 
     // Start is called before the first frame update
@@ -56,15 +56,17 @@ public class GameController : MonoBehaviour
     }
 
     private void AvanzarNivel()
-    {
-        nivelActual++;
+    {       
+        nivelActual++;      
         if (nivelActual > FindObjectOfType<GameStatus>().nivelMaximo)
         {
             SceneManager.LoadScene("WinScene");
         }
-            
-        FindObjectOfType<GameStatus>().nivelActual = nivelActual;
-        SceneManager.LoadScene("Level" + nivelActual);
+        else
+        {
+            FindObjectOfType<GameStatus>().nivelActual = nivelActual;
+            SceneManager.LoadScene("Level" + nivelActual);
+        }
     }
 
     public void AnotarBubbleAlone()

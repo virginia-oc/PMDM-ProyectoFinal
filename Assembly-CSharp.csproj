@@ -64,6 +64,8 @@
     <Compile Include="Assets\Scripts\PlatformPortal.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Mighta.cs" />
+    <Compile Include="Assets\Scripts\InvaderShot.cs" />
+    <Compile Include="Assets\Scripts\Invader.cs" />
     <Compile Include="Assets\Scripts\BubbleWithEnemy.cs" />
     <Compile Include="Assets\Scripts\BubbleAlone.cs" />
     <Compile Include="Assets\Scripts\ZenChan.cs" />
